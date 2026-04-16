@@ -1,0 +1,10 @@
+[
+  { "value": "private_ltd", "label": "Private Limited" },
+  { "value": "public_ltd", "label": "Public Limited" },
+  { "value": "sole_prop", "label": "Sole Proprietorship" },
+  { "value": "partnership", "label": "Partnership" },
+  { "value": "llp", "label": "Limited Liability Partnership (LLP)" },
+  { "value": "ngo", "label": "Non-Governmental Organisation (NGO)" },
+  { "value": "trust", "label": "Trust" },
+  { "value": "cooperative", "label": "Cooperative Society" }
+]
