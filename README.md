@@ -1,62 +1,182 @@
-# React + TypeScript + Vite
+# Vendor Onboarding – Take Home Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive **3-step Vendor Onboarding Form** built with **React + Vite + TypeScript** using modern form handling, validation, state persistence, and file storage.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tech Stack
 
-## React Compiler
+* React (Functional Components)
+* Vite
+* TypeScript
+* React Hook Form
+* Zod + `@hookform/resolvers`
+* Redux Toolkit
+* Redux Persist
+* IndexedDB (`idb`)
+* TailwindCSS
+* shadcn/ui
+* styled-components
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📦 Installation & Run
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-
-      tseslint.configs.recommendedTypeChecked,
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
-
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+App will run on:
 
-```js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      reactX.configs['recommended-typescript'],
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-])
+```bash
+http://localhost:5173
 ```
+
+---
+
+## ✅ Features Implemented
+
+### Multi-Step Vendor Form
+
+### Step 1 – Company & Contact Information
+
+* Company Name
+* Company Type (dynamic dropdown from local JSON)
+* Registration Number
+* Established Date
+* Employee Count
+* Contact Name
+* Contact Email
+* Contact Phone
+* Company Logo Upload
+
+### Step 2 – Address & Bank Details
+
+* Address
+* Country / State
+* ZIP Code
+* Bank Name
+* Account Number
+* IFSC / SWIFT
+* Bank Proof Upload
+
+### Step 3 – Services & Declaration
+
+* Services Offered
+* Pricing Model
+* Preferred Currency
+* Declaration Checkbox
+* Notes
+* Final Document Upload
+
+---
+
+## ✅ Validation
+
+Each step has its own **Zod schema** integrated with **React Hook Form** using `zodResolver`.
+
+* Required fields validated
+* Email format validated
+* Minimum phone length
+* Step-wise validation before moving next
+
+---
+
+## 🔄 State Management
+
+All form data is managed using **Redux Toolkit**.
+
+* Save step data individually
+* Navigate between steps
+* Final submit combines all steps
+
+---
+
+## 💾 Persistence
+
+### Redux Persist
+
+Form data remains available after page refresh.
+
+### IndexedDB
+
+Uploaded files are stored in browser IndexedDB.
+
+Stored file metadata in Redux:
+
+* name
+* size
+* type
+* dbKey
+
+After refresh:
+
+* filename / preview restored
+
+---
+
+## 🌐 Dynamic Dropdown
+
+Company Type options loaded from:
+
+```bash
+/public/mocks/companyTypes.json
+```
+
+Includes:
+
+* Loading state
+* Error state
+* Retry support
+
+---
+
+## 🎨 UI / UX
+
+* Responsive layout
+* TailwindCSS utility styling
+* shadcn/ui components
+* Clean spacing and cards
+* Inline validation messages
+
+---
+
+## 📤 Final Submit
+
+On final submit:
+
+* All collected data shown on screen
+* JSON preview rendered
+* Payload logged in console
+* Success confirmation screen displayed
+
+---
+
+## ⚠️ Assumptions / Trade-offs
+
+* Mock APIs use local JSON files
+* No real backend integration
+* File preview depends on file type
+* IndexedDB storage is browser-specific
+
+---
+
+## 📁 Project Structure
+
+```bash
+src/
+ ┣ components/
+ ┣ features/
+ ┣ pages/
+ ┣ schemas/
+ ┣ lib/
+ ┣ hooks/
+ ┗ App.tsx
+```
+
+---
+
+## 👨‍💻 Author
+
+Developed as part of Frontend Take-Home Assignment.
